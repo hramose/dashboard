@@ -5,7 +5,7 @@
               <div data-original-title="Toggle Navigation" data-placement="right" class="fa fa-bars tooltips"></div>
           </div>
           <!--logo start-->
-          <a href="#" class="logo" >Flat<span>lab</span></a>
+          <a href="#" class="logo" >MANGAN <span>Dashboard</span></a>
           <!--logo end-->
           
           </div>
@@ -14,7 +14,7 @@
                   <!-- user login dropdown start-->
                   <li class="dropdown">
                       <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                          <img alt="" src="{{asset('layout/img/avatar1_small.jpg')}}">
+                          <!-- <img alt="" src="{{asset('layout/img/avatar1_small.jpg')}}"> -->
                           <span class="username">Jhon Doue</span>
                           <b class="caret"></b>
                       </a>
