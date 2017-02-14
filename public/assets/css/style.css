@@ -1959,6 +1959,10 @@ ul.ft-link li a i {
     color: #87e2e7;
 }
 
+.box-button {
+    display: inline-block;
+}
+
 a.mail-dropdown {
     background: #80d3d9;
     padding:3px 5px;

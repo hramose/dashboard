@@ -7,9 +7,9 @@
                                 <hr>
                             <div>
                                 <div class="row col-lg-2">
-                                    <img src="img/profile-avatar.jpg" alt="">
+                                    <img src="{{asset('assets/img/avatar1.jpg')}}" alt="">
                                 </div>
-                                <div class="row">
+                                <div class="row ">
                                     <div class="bio-row">
                                         <p><span>Username </span>: rezandry</p>
                                     </div>
@@ -27,7 +27,7 @@
                             </div>
                             <div>
                                 <div class="row col-lg-2">
-                                    <img src="img/profile-avatar.jpg" alt="">
+                                    <img src="{{asset('assets/img/avatar1.jpg')}}" alt="">
                                 </div>
                                 <div class="row">
                                     <div class="bio-row">

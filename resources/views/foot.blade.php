@@ -3,8 +3,8 @@
     <script src="{{asset('assets/js/jquery.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script class="include" type="text/javascript" src="{{asset('assets/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.nicescroll.js')}}" type="text/javascript"></script>
+    <!--<script src="{{asset('assets/js/jquery.scrollTo.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.nicescroll.js')}}" type="text/javascript"></script>-->
     <script src="{{asset('assets/js/respond.min.js')}}" ></script>
   
     <!--this page plugins-->
@@ -28,10 +28,4 @@
     <!--common script for all pages-->
     <script src="{{asset('assets/js/common-scripts.js')}}"></script>
     <script src="{{asset('assets/js/advanced-form-components.js')}}"></script>
-    <script type="text/javascript">
-      $(function() {
-        //    fancybox
-          jQuery(".fancybox").fancybox();
-      });
-
-  </script>
+    

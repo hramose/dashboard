@@ -1,5 +1,18 @@
 @extends('template')
 @section('main')              
+<?php
+const DEFAULT_URL = 'https://sandbox-mangan.firebaseio.com/';
+const DEFAULT_TOKEN = 'Tw82srBlXIoNY4Dpjm5tRUQaE2UZQjVNu0oAgoia';
+const DEFAULT_PATH = '/';
+
+//default parameter untuk memanggil path tertentu
+$firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
+// $name menyimpan json hasil dari firebase yang didapat
+$name = $firebase->get(DEFAULT_PATH . '/dataResto');
+//json_decode merubah object menjadi array
+$obj = json_decode($name, TRUE);
+// echo $name;
+?>
               <!-- page start-->
               	  <div class="row">
                       <div class="col-lg-12" align="center"> <h3>Input Data Restoran</h3></div>
@@ -153,10 +166,11 @@
                               </tr>
                               </thead>
                               <tbody>
+                                  <?php foreach($obj as $s) {?>
                               <tr>
-                                  <td><a href="#">Vector Ltd</a></td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
+                                  <td><a href="#"><?php echo $s["namaResto"]; ?></a></td>
+                                  <td><?php $new = intval($s["tglInput"]); echo gmdate('r',$new); ?></td>
+                                  <td><?php echo $s["index"]?></td>
                                   <td>Lorem  imit</td>
                                   <td>Lorem  imit</td>
                                   <td>Lorem  imit</td>
@@ -169,118 +183,7 @@
                                       <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">Adimin co</a>
-                                  </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td> <a href="#"> boka soka</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                 <td> <a href="#">Salba lib</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td> <a href="#">Adimin Co</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td> <a href="#"> adimin coM</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td> <a href="#">Vector</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td> <a href="#"> Admin Lte</a> </td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                  <td>Lorem  imit</td>
-                                   
-                                   
-                                  <td>Lorem  imit</td>  
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
+                              <?php } ?>
                               </tbody>
                           </table>
                           </section>

@@ -23,9 +23,9 @@ Route::get('menu', function() {
 	return view('menu');
 });
 
-Route::get('keyword', function() {
-	return view('keyword');
-});
+Route::get('keyword', 'KeywordController@listkeyword');
+Route::post('keyword/simpan', 'KeywordController@store');
+Route::delete('keyword/delete/{index}', 'KeywordController@destroy');
 
 Route::get('kurir', function() {
 	return view('kurir');

@@ -18,3 +18,6 @@
       <script src="js/html5shiv.js"></script>
       <script src="js/respond.min.js"></script>
     <![endif]-->
+
+<script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+

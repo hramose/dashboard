@@ -1,30 +1,46 @@
 @extends('template');
 @section('main')
+<?php
+const DEFAULT_URL = 'https://sandbox-mangan.firebaseio.com/';
+const DEFAULT_TOKEN = 'Tw82srBlXIoNY4Dpjm5tRUQaE2UZQjVNu0oAgoia';
+const DEFAULT_PATH = '/';
+
+//default parameter untuk memanggil path tertentu
+$firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
+// $name menyimpan json hasil dari firebase yang didapat
+$name = $firebase->get(DEFAULT_PATH . '/keywordResto');
+//json_decode merubah object menjadi array
+$obj = json_decode($name, TRUE);
+?>
+
               <!-- page start-->
                   <div class="row">
                       <div class="col-lg-12" align="center"> <h3>Input Data Keyword</h3></div>
+                      <p id="demo"></p>
                         <section class="panel">                       
                          <div class="col-lg-4">
                             <header class="panel-heading">
                               Silahkan inputkan data keyword
                             </header>
                           <div class="panel-body">
-                              <form class="form-horizontal" role="form">
+
+                              <form class="form-horizontal" role="form" action="{{ url('keyword/simpan')}}" method="POST" >
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                   <div class="form-group">
                                       <label for="indext" class="col-lg-2 col-sm-2 control-label">Index</label>
                                       <div class="col-lg-10">
-                                          <input type="text" class="form-control" id="index" placeholder="Masukkan index yang ingin di berikan">
+                                          <input type="text" class="form-control" name="index" placeholder="Masukkan index yang ingin di berikan">
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <label for="keyword" class="col-lg-2 col-sm-2 control-label">Keyword</label>
                                       <div class="col-lg-10">
-                                          <input type="text" class="form-control" id="keyword" placeholder="Masukkan keywordnya">
+                                          <textarea class="form-control" name="keyword" placeholder="Masukkan keywordnya"></textarea>
                                       </div>
                                   </div>
                                   <div class="form-group">
                                       <div class="col-lg-offset-2 col-lg-10">
-                                          <button type="button" class="btn btn-success"><i class="fa fa-check"></i> Simpan </button>
+                                          <input type="submit" value="simpan" class="btn btn-success">
                                       </div>
                                   </div>
                               </form>
@@ -46,124 +62,24 @@
                               </tr>
                               </thead>
                               <tbody>
+                              <?php foreach($obj as $s){ ?>
                               <tr>
-                                  <td><a href="#">Vector Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                  <td width="20%"><a href="#"><?php echo $s["index"]; ?></a></td>
+                                  <td width="70%" class="hidden-phone"><?php echo $s["keyword"]; ?></td>
+                                  <td width="10%" class="center">
+                                    <div class="box-button">
+                                        {!! Form::open(['method'=>'DELETE','action'=>['KeywordController@destroy', $s["index"]]]) !!}
+                                        {!! Form::submit('Delete', ['class'=>'btn btn-danger btn-sm']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
                                   </td>
                               </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          Adimin co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          boka soka
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          salbal llb
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">Vector Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          Adimin co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">Vector Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          Adimin co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="#">Vector Ltd</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo imit</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="#">
-                                          Adimin co
-                                      </a>
-                                  </td>
-                                  <td class="hidden-phone">Lorem Ipsum dorolo</td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
+                              <?php } ?>
                               </tbody>
                           </table>
+                          </div>
                           </section>
+                      </div>
                   </div>
-                  </div>
-              <!-- page end-->
+                  
 @stop
