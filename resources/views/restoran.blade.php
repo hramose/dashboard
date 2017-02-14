@@ -11,7 +11,7 @@ $firebase = new \Firebase\FirebaseLib(DEFAULT_URL, DEFAULT_TOKEN);
 $name = $firebase->get(DEFAULT_PATH . '/dataResto');
 //json_decode merubah object menjadi array
 $obj = json_decode($name, TRUE);
-// echo $name;
+// dd($obj);
 ?>
               <!-- page start-->
               	  <div class="row">
@@ -170,7 +170,7 @@ $obj = json_decode($name, TRUE);
                               <tr>
                                   <td><a href="#"><?php echo $s["namaResto"]; ?></a></td>
                                   <td><?php $new = intval($s["tglInput"]); echo gmdate('r',$new); ?></td>
-                                  <td><?php echo $s["index"]?></td>
+                                  <td><?php echo $s[12]?></td>
                                   <td>Lorem  imit</td>
                                   <td>Lorem  imit</td>
                                   <td>Lorem  imit</td>
