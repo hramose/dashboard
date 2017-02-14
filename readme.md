@@ -11,4 +11,10 @@ In this project, we are developing administrator dashboard for delivery service 
 - Transaksi
 - User
 
+require untuk laravelcollective
+composer require "laravelcollective/html:5.4.*"
+
+require untuk wrapper firebase
+composer require ktamas77/firebase-php dev-master
+
 We are still in developing mode.
